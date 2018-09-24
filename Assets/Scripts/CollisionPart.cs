@@ -108,13 +108,15 @@ public sealed class CollisionPart : MonoBehaviour {
         if (!this.awake)
             return;
 
-
-        Vector3 centerPoint = this.camera_.WorldToScreenPoint(this.trans_.position);
+		Vector3 worldPoint = this.trans_.position;
+        Vector3 centerPoint = this.camera_.WorldToScreenPoint(worldPoint);
         this.centerPoint = centerPoint;
 
-        Vector3 point = Quaternion.Inverse(this.cameraTrans.rotation) * (this.trans_.position - this.cameraTrans.position);
+		Quaternion inv = Quaternion.Inverse(this.cameraTrans.rotation);
+        Vector3 point = inv * (worldPoint - this.cameraTrans.position);
         float distance = Mathf.Abs(point.z);
-        float standardDistance = ((float)Screen.height * 0.5f) / Mathf.Tan(this.camera_.fieldOfView * 0.5f * Mathf.Deg2Rad);
+		float rad = this.camera_.fieldOfView * 0.5f * Mathf.Deg2Rad;
+        float standardDistance = ((float)Screen.height * 0.5f) / Mathf.Tan(rad);
         float actualScale = standardDistance / distance;
 
         for (int i = 0; i < this.collisionCount; ++i) {
