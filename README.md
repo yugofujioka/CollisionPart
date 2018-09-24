@@ -1,2 +1,2 @@
 # CollisionPart
-Unity Fragments掲載オブジェクトプール　第2章
+Unity Fragments掲載オブジェクトパーツ　第2章
