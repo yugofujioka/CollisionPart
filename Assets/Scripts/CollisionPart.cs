@@ -11,8 +11,8 @@ public sealed class CollisionPart : MonoBehaviour {
     /// </summary>
     [System.Serializable]
     public struct CollisionData {
-        public float range;         // 範囲
-        public Vector3 offset;      // 平行移動
+        public float range;    // 範囲
+        public Vector3 offset; // 平行移動
     }
     #endregion
 
@@ -24,20 +24,20 @@ public sealed class CollisionPart : MonoBehaviour {
     [System.NonSerialized]
     public Vector3 centerPoint = Vector3.zero;
 
-    private Transform trans_ = null;            // Transformキャッシュ
-    private Camera camera_ = null;              // 表示カメラキャッシュ
-    private Transform cameraTrans = null;       // 表示カメラTransformキャッシュ
-    private COL_CATEGORY category = COL_CATEGORY.PLAYER;    // コリジョンカテゴリ
-    private Collision[] collisions = null;      // コリジョンリスト
-    private HitHandler hitHandler = null;       // 接触処理
-    private int collisionCount = 0;             // コリジョン数
-    private bool awake = false;                 // 起動済フラグ
+    private Transform trans_ = null;       // Transformキャッシュ
+    private Camera camera_ = null;         // 表示カメラキャッシュ
+    private Transform cameraTrans = null;  // 表示カメラTransformキャッシュ
+    private COL_CATEGORY category = COL_CATEGORY.PLAYER; // コリジョン分類
+    private Collision[] collisions = null; // コリジョンリスト
+    private HitHandler hitHandler = null;  // 接触処理
+    private int collisionCount = 0;        // コリジョン数
+    private bool awake = false;            // 起動済フラグ
     #endregion
 
 
     #region PROPERTY
     /// <summary> 起動中か </summary>
-    public bool isAwake   { get { return this.awake; } }
+    public bool isAwake { get { return this.awake; } }
     #endregion
 
 
@@ -124,5 +124,5 @@ public sealed class CollisionPart : MonoBehaviour {
             this.collisions[i].point.y = this.centerPoint.y + offset.y;
         }
     }
-	#endregion
+    #endregion
 }
